@@ -1,0 +1,303 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+body
+{
+	background-image: url('/assets/libraryBackground.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+  	background-size: cover;
+  	margin: 0;
+}
+
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  height: 20%;
+  line-height: 50px;
+  padding: 15px 32px;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.buttonLogIn
+{
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  height: 20%;
+  line-height: 20px;
+  padding: 15px 32px;
+  text-decoration: none;
+  font-size: 16px;	
+}
+
+
+/* welcome */
+.loginOptionBox
+{
+  background: rgba(76, 175, 80, 0.3);
+  border: 3px solid green; 
+  width: 30%;
+  height: 250px;
+  margin-top:20%;
+  color: white;
+}
+
+/* fonts */
+.showDetails, .caption, .thank, .goToHome
+{
+	color: #fff;
+}
+.header h1, .header p
+{	
+	color: #000;
+	
+}
+.contents
+{
+	color: #fff;
+}
+
+
+/* signUpPage */
+.signUpBox
+{
+  background: rgba(76, 175, 80, 0.3);
+  border: 3px solid green; 
+  width: 50%;
+  height: 550px;
+  margin-top:20%;
+  color: white;
+}
+.signUpTable td
+{
+  font-size: 20px;
+  padding: 10px 0px;
+}
+.signUpButton {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  height: 20%;
+  line-height: 20px;
+  padding: 15px 32px;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+
+
+/* fonts */
+.showDetails, .caption, .thank, .goToHome
+{
+	color: #fff;
+}
+.header h1, .header p
+{	
+	color: #000;
+	
+}
+.contents
+{
+	color: #fff;
+}
+
+/* header */
+.header {
+  overflow: hidden;
+  padding: 20px 10px;
+}
+
+.logo{
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px; 
+  line-height: 25px;
+  border-radius: 4px;
+}
+
+.header-right {
+  float: right;
+}
+
+.tab{
+	background-color: rgba(166, 166, 166, 0.75); 
+	height: 60px;
+	list-style-type: none;
+	text-align: right;
+	margin: 0;
+	padding: 0;
+}
+
+.tab .contents{
+	display: inline-block;
+	font-size: 22px;
+	padding: 20px;
+}
+
+.tab a{
+	text-decoration: none;
+	color: blue;
+}
+
+.tab a:hover{
+	color: green;
+}
+@media screen and (max-width: 500px) {
+  .header a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .header-right {
+    float: none;
+  }
+}
+
+/* thumbnail */
+a:hover {
+  text-decoration: none;
+}
+
+a:hover .thumbnail img {
+  opacity: 0.5;
+}
+
+
+.thumbnail {
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  height: 350px;
+}
+
+.title,
+.author {
+  color: #fff;
+  text-align: center;
+}
+
+
+
+
+
+
+/* Lended Books Page */
+.lendedBookBox
+{
+  font-size: 20px;
+  background: rgba(76, 175, 80, 0.3);
+  border: no-border; 
+  width: 60%;
+  height: 350px;
+  margin-top:5%;
+  color: white;
+  overflow: auto;
+}
+
+.lendedBookBox table
+{
+  text-align: center;
+  width: 100%;
+}
+.lendedBookBox th, td
+{
+  padding: 10px 0px;
+}
+
+.lendedBookBox th 
+{
+  color: #000;
+  background-color: rgba(0, 128, 0, 0.8);
+}
+
+.lendedBookBox td a
+{
+  text-decoration: none;
+  background-color: rgba(0, 128, 0, 0.8);
+  border-radius: 5px;
+  font-size: 17px;
+}
+.lendedBookBox td a:visited
+{
+  text-decoration: none;
+  color: blue;
+}
+
+
+.lendedBookBox #t1
+{
+  width: 10%;
+}
+.lendedBookBox #t2
+{
+  width: 45%;
+}
+.lendedBookBox #t3
+{
+  width: 30%;
+}
+.lendedBookBox #t4
+{
+  width: 15%;
+}
+
+
+
+
+
+
+
+/* Thank Page */
+.thank{
+	font-size: 55px;
+}
+
+.goToHome
+{
+	font-size: 20px;
+}
+
+
+
+
+
+
+
+/* Footer */
+.footer {
+  background-color: #000;
+  color: #fff;
+  padding: 50px 0 35px 0;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0px;
+  text-align: center;
+
+}
+
+.footer h3 {
+  text-transform: uppercase;
+  font-size: 15px;
+}
+
+.footer ul {
+  padding: 0;
+  list-style: none;
+}
+
+.footer a {
+  color: #aaa;
+  font-size: 13px;
+  display: inline-block;
+  padding: 5px 0;
+}

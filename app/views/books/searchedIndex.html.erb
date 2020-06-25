@@ -1,0 +1,52 @@
+<div class="fullPage" >
+	<div class="header" >
+		<%= link_to image_tag('/assets/bookLogo.jpg'), '/books' , :class=>'logo' %>
+
+		<center>
+			<h1 > LIBRARY MANAGEMENT SYSTEM</h1>
+			<p> A platform to search your favorite book </p>
+		</center>
+		<div class="tab">
+			<div class="contents">
+				Welcome, <%= current_user.name %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+				<%= link_to 'Lended Books', lendedBooks_path %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+				<%= link_to 'LogOut', destroy_user_session_path, method: :delete %>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+			</div>
+
+			<%= form_tag(searched_path, method: :get) do %>
+				<%= text_field_tag(:search, params[:search] ,:placeholder=>"Search By Name") %>
+				<%= submit_tag ("Search") %>
+			<% end %>
+
+		</div>
+
+	</div>
+
+	<div class="container" >
+			<center>
+				<% if @book %>
+					<%= link_to book_path(@book) do %>
+						<div class="thumbnail">
+							<img src="/assets/bookLogo.jpg">
+							<div class="caption">
+								<h3 class="title"> <%= @book.title %></h3>
+								<p class="author"><%= @book.author %></p>
+							</div>
+						</div>
+					<% end %>
+				<% else %>
+					<h1> No such Book </h1>
+				<% end %>
+			</center>
+
+	</div>
+
+
+	<div class="footer">
+		Visit Soon
+	</div>
+</div>

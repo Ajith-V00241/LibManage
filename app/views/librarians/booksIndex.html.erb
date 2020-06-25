@@ -1,0 +1,35 @@
+<div class="fullPage" >
+	<div class="header" >
+		<%= link_to image_tag('/assets/bookLogo.jpg'), '/librarians/index' , :class=>'logo' %>
+
+		<center>
+			<h1 > LIBRARY MANAGEMENT SYSTEM</h1>
+			<p> A platform to search your favorite book </p>
+		</center>
+		<div class="tab">
+			<div class="contents">
+				Welcome, <%= current_user.name %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+				<%= link_to 'LogOut', destroy_user_session_path, method: :delete %>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+			</div>
+
+		</div>
+
+	</div>
+
+
+	<div class="librarianContainer" >
+
+
+
+
+
+	</div>
+
+
+	<div class="footer">
+		Visit Soon
+	</div>
+</div>

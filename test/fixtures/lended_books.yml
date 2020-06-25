@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  username: MyString
+  date_of_lend: 2020-06-25 14:31:11
+
+two:
+  name: MyString
+  username: MyString
+  date_of_lend: 2020-06-25 14:31:11

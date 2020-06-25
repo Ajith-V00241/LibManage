@@ -1,0 +1,33 @@
+// Place all the styles related to the Librarians controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.librarianContainer{
+	margin: 10px 30px;
+}
+.librarianThumbnail{
+	border-style: solid;
+	border-color: green;
+	border-radius: 8px;
+	color: white;
+	width: 200px;
+	height: 200px;
+	margin: 40px;
+	float: left;
+	overflow: hidden; 
+	background-repeat: no-repeat; 
+	background-position: center; 
+	background-size: auto;
+}
+
+
+
+.librarianThumbnail p{
+	margin-top: 90px;
+	text-align: center;
+	font-size: 30px;
+	color: black;
+	font-weight: bold;
+	font-variant: small-caps;
+	background: rgba(360,360,360,0.5);
+}

@@ -1,0 +1,2 @@
+class LendedBook < ApplicationRecord
+end
