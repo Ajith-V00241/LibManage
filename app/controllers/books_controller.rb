@@ -16,13 +16,18 @@ class BooksController < ApplicationController
 
 	end
 
+	def pendingRequests
+
+	end
+
 	def lendedBooks
 	    @lendedBooks=LendedBook.where(username: current_user.name)
 	end
 
 	def lend
 		@book = Book.find_by(id: params[:id])
-		@lendedBook = LendedBook.create(name: @book.title, username: current_user.name, date_of_lend: Date.today.to_s, user_id: current_user.id)
+		@lendRequest = LendRequest.create(status: "Pending", user_id: current_user.id, book_id: params[:id])
+		#@lendedBook = LendedBook.create(name: @book.title, username: current_user.name, date_of_lend: Date.today.to_s, user_id: current_user.id)
 		redirect_to '/books/thank'
 	end
 

@@ -20,33 +20,24 @@
 	</div>
 
 
-	<div class="librarianContainer" >
-		<center>
-			<div class="librarianIndexBox">
-				<table >
-					<tr>
-						<th>S.No.</th>
-						<th>Name</th>
-					</tr>
-					<% i=1 %> 
-					<% @books.each do |book| %>
-						<tr>
-							<td> <%= i %><% i=i+1 %></td>
-							<td> <%= link_to book.title, librarian_book_path(book) %> </td>
-						</tr>
-					<% end %>
-
-				</table>
+	<div class="librarianContainer" > 
+		<a href="<%= lend_all_requests_path %>" >
+			<div class="librarianThumbnail" style="background: url('/assets/Requests.jpg'); background-repeat: no-repeat; background-position: center; background-size: auto;">
+				<p>Lend Book Requests</p>
 			</div>
-		</center>
-	</div>
+		</a>
 
+		<a href="<%= return_all_requests_path %>" >
+			<div class="librarianThumbnail" style="background: url('/assets/Requests.jpg'); background-repeat: no-repeat; background-position: center; background-size: auto;">
+				<p>Return Book Requests</p>
+			</div>
+		</a>
+
+
+
+	</div>
 
 
 	<br><br><br><br><br><br><br><br><br>
 
-	
-	<div class="footer">
-		Visit Soon
-	</div>
 </div>

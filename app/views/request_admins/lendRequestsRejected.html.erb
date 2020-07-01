@@ -1,0 +1,98 @@
+<div class="fullPage" >
+	<div class="header" >
+		<%= link_to image_tag('/assets/bookLogo.jpg'), '/librarians/index' , :class=>'logo' %>
+
+		<center>
+			<h1 > LIBRARY MANAGEMENT SYSTEM</h1>
+			<p> A platform to search your favorite book </p>
+		</center>
+		<div class="tab">
+			<div class="contents">
+				Welcome, <%= current_user.name %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+				<%= link_to 'LogOut', destroy_user_session_path, method: :delete %>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+			</div>
+
+		</div>
+
+	</div>
+
+
+	<div class="librarianContainer" >
+		<center>
+			<h1 style="color: #000; background-color: rgba(230, 0, 0,0.5); height: 40px;"> Lend Book Requests </h1>
+			<div class="lendBookTabs">
+				<a class= "lendBookTabAnchor" href='/librarians/requests/lendBook/all' >
+					<div class="lendBookTab">
+						All Requests
+					</div>
+				</a>
+				<a class= "lendBookTabAnchor" href='/librarians/requests/lendBook/pending' >
+					<div class="lendBookTab">
+						Pending Requests
+					</div>
+				</a>
+				<a class= "lendBookTabAnchor" href='/librarians/requests/lendBook/approved'>
+					<div class="lendBookTab">
+						Approved Requests
+					</div>
+				</a>
+				<a class= "lendBookTabAnchor" href='/librarians/requests/lendBook/rejected'>
+					<div class="lendBookTabActive">
+						Rejected Requests
+					</div>
+				</a>
+			</div>
+
+			<br><br>
+
+			<div class= "lendBookBox"> 
+				<% if @lendRequests.empty? %>
+				<br><br><br>
+					<h1> No Requests for lending Books </h1>
+				<% else %>
+				<table>
+						<tr>
+							<th id="t1"> S.No. </th>
+							<th id="t2"> Book </th>
+							<th id="t3"> User </th>
+							<th id="t4"> Available <br> Books </th>
+							<th id="t5"> Status </th>
+							<th id="t6"> Action </th>
+						</tr>
+					<% i=1 %>
+					<% @lendRequests.each do |request| %>
+						<% book = @books.find(request.book_id) %>
+						<tr>
+							<td> <%= i %> <% i+=1 %> </td>
+							<td> <%= book.title %> </td>
+							<td> <%= @users.find(request.user_id).email %> </td>
+							<td> <%= book.availableBooks %>/<%= book.totalBooks %> </td>
+							<td> <%= request.status %> </td>
+							<td>
+								<% if request.status == "Pending" %>
+									<%= link_to "Approve", approve_lend_request_path(request) %>
+									/
+									<%= link_to "Reject", reject_lend_request_path(request) %>
+								<% else %>
+									No Action 
+								<% end %>
+							</td>
+						</tr>
+					<% end %>
+				</table>
+				<% end %>
+				
+			</div>
+
+		</center>
+
+
+	</div>
+
+
+	<br><br><br><br><br><br><br><br><br>
+
+</div>

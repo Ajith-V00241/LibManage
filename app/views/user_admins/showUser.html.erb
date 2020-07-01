@@ -1,0 +1,95 @@
+<div class="fullPage" >
+	<div class="header" >
+		<%= link_to image_tag('/assets/bookLogo.jpg'), '/librarians/index' , :class=>'logo' %>
+
+		<center>
+			<h1 > LIBRARY MANAGEMENT SYSTEM</h1>
+			<p> A platform to search your favorite book </p>
+		</center>
+		<div class="tab">
+			<div class="contents">
+				Welcome, <%= current_user.name %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+				<%= link_to 'LogOut', destroy_user_session_path, method: :delete %>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+			</div>
+
+		</div>
+
+	</div>
+
+
+	<div class="librarianContainer" >
+		<center>
+
+			<div class="showUserDetails">
+				<br><br>
+				<h1> USER DETAILS </h1>
+				<table class="bookDetails">
+					<tr>
+						<td class="TableTag"> <b> Name </b></td>
+						<td> : &nbsp;&nbsp;&nbsp;</td>
+						<td> <%= @user.name %> </td>
+					</tr>
+					<tr>
+						<td class="TableTag"> <b>Email</b> </td>
+						<td> : &nbsp;&nbsp;&nbsp;</td>
+						<td> <%= @user.email %> </td>
+					</tr>
+					<tr>
+						<td class="TableTag"><b> Phone </b></td>
+						<td> : &nbsp;&nbsp;&nbsp;</td>
+						<td> <%= @user.phone %> </td>
+					</tr>
+					<tr>
+						<td class="TableTag"> <b>Address</b> </td>
+						<td> : &nbsp;&nbsp;&nbsp;</td>
+						<td> <%= @user.address %> </td>
+					</tr>
+					<tr>
+						<td class="TableTag"> <b>Date Of Membership </b></td>
+						<td> : &nbsp;&nbsp;&nbsp;</td>
+						<td> <%= @user.date_of_membership %> </td>
+					</tr>
+					<tr>
+						<td class="TableTag"> <b>Total Checkouts</b> </td>
+						<td> : &nbsp;&nbsp;&nbsp;</td>
+						<td> <%= @user.totalcheckout %> </td>
+					</tr>
+				</table>
+				<a class="button">Edit</a> 
+				 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a class="button">Delete</a>
+				<br><br>
+			</div>
+
+			<div class= "lendedBookBox">
+				<% if @lendedBooks.empty? %>
+					<h1 style="color: black;"> No Books are lended </h1>
+				<% else %>
+					<table>
+						<tr >
+							<th id="t1">S.No.</th>
+							<th id="t2">Title</th>
+							<th id="t3">Date Of Lending</th>
+						</tr>
+						<% i=1 %>
+						<% @lendedBooks.each do |lendedBook| %>
+							<tr>
+								<td> <%= i %><% i=i+1 %> </td>
+								<td> <%= lendedBook.name %> </td>
+								<td> <%= lendedBook.date_of_lend %> </td>
+							</tr>
+						<% end %>
+					</table>
+				<% end %>
+			</div>
+
+		</center>
+	</div>
+
+
+	<br><br><br><br><br><br><br><br><br>
+
+</div>

@@ -22,31 +22,40 @@
 
 	<div class="librarianContainer" >
 		<center>
-			<div class="librarianIndexBox">
-				<table >
-					<tr>
-						<th>S.No.</th>
-						<th>Name</th>
-					</tr>
-					<% i=1 %> 
-					<% @books.each do |book| %>
+			<h1> List Of All Users </h1><br>
+			<h4>Note:</h4> Click on name to open details
+			<div class= "allUsersBox"> 
+				<% if @users.empty? %>
+				<br><br><br>
+					<h1> No Users </h1>
+				<% else %>
+				<table>
 						<tr>
-							<td> <%= i %><% i=i+1 %></td>
-							<td> <%= link_to book.title, librarian_book_path(book) %> </td>
+							<th id="t1"> S.No. </th>
+							<th id="t2"> User Id </th>
+							<th id="t3"> User Name</th>
 						</tr>
+					<% i=1 %>
+					<% @users.each do |user| %>
+						<% if !user.admin %>
+							<tr class="allUsersTableRow">
+									<td> <%= i %> <% i+=1 %> </td>
+									<td> <%= user.id %> </td>
+									<td> <%= link_to user.name, show_user_path(user) %> </td>
+								</a>
+							</tr>
+						<% end %>
 					<% end %>
-
 				</table>
+				<% end %>
+				
 			</div>
 		</center>
 	</div>
 
 
 
+
 	<br><br><br><br><br><br><br><br><br>
 
-	
-	<div class="footer">
-		Visit Soon
-	</div>
 </div>

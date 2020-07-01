@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_25_115938) do
+ActiveRecord::Schema.define(version: 2020_06_29_073135) do
 
   create_table "books", force: :cascade do |t|
     t.string "title"
@@ -21,6 +21,18 @@ ActiveRecord::Schema.define(version: 2020_06_25_115938) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "image"
+    t.integer "totalBooks"
+    t.integer "availableBooks"
+  end
+
+  create_table "lend_requests", force: :cascade do |t|
+    t.string "status"
+    t.integer "user_id"
+    t.integer "book_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_lend_requests_on_book_id"
+    t.index ["user_id"], name: "index_lend_requests_on_user_id"
   end
 
   create_table "lended_books", force: :cascade do |t|
@@ -31,6 +43,16 @@ ActiveRecord::Schema.define(version: 2020_06_25_115938) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_lended_books_on_user_id"
+  end
+
+  create_table "return_requests", force: :cascade do |t|
+    t.string "status"
+    t.integer "user_id"
+    t.integer "book_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_return_requests_on_book_id"
+    t.index ["user_id"], name: "index_return_requests_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

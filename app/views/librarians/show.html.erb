@@ -1,0 +1,71 @@
+<div class="fullPage" >
+	<div class="header" >
+		<%= link_to image_tag('/assets/bookLogo.jpg'), '/librarians/index' , :class=>'logo' %>
+
+		<center>
+			<h1 > LIBRARY MANAGEMENT SYSTEM</h1>
+			<p> A platform to search your favorite book </p>
+		</center>
+		<div class="tab">
+			<div class="contents">
+				Welcome, <%= current_user.name %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+				<%= link_to 'LogOut', destroy_user_session_path, method: :delete %>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="librarianContainer" >
+		<center>
+			<div class="showBlock" >
+					<img src="<%=@book.image %>" >
+			</div>
+			<div class="showDetails">
+				<h2>Book Details</h2>
+				<table class="bookDetails">
+					<tr>
+						<td class="TableTag">Title</td>
+						<td> : </td>
+						<td> <%= @book.title %> </td>
+					</tr>
+					<tr>
+						<td class="TableTag">Author</td>
+						<td> : </td>
+						<td> <%= @book.author %> </td>
+					</tr>
+					<tr>
+						<td class="TableTag">Publisher </td>
+						<td> : </td>
+						<td> <%= @book.publisher %> </td>
+					</tr>
+					<tr>
+						<td class="TableTag">Language</td>
+						<td> : </td>
+						<td> <%= @book.language %> </td>
+					</tr>
+					<tr>
+						<td class="TableTag">Description</td>
+						<td> : </td>
+						<td> <%= @book.description %> </td>
+					</tr>
+
+				</table>
+
+			</div>
+			<%= link_to "Edit", librarian_book_edit_path(@book) , class: 'button' %>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<%= link_to "Remove Book", librarian_book_remove_path(@book.id), method: :delete, class: 'button' %>
+		</center>
+	</div>
+
+
+	<br><br><br><br><br><br><br><br><br>
+
+	<div class="footer">
+		Visit Soon
+	</div>
+</div>

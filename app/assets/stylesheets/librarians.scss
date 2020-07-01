@@ -5,6 +5,8 @@
 .librarianContainer{
 	margin: 10px 30px;
 }
+
+/* Libratian Home Page */
 .librarianThumbnail{
 	border-style: solid;
 	border-color: green;
@@ -30,4 +32,83 @@
 	font-weight: bold;
 	font-variant: small-caps;
 	background: rgba(360,360,360,0.5);
+}
+
+/* Librarian Book Index page */
+.librarianIndexBox
+{
+  font-size: 20px;
+  background: rgba(76, 175, 80, 0.3);
+  border: no-border; 
+  width: 60%;
+  height: 350px;
+  margin-top:5%;
+  color: white;
+  overflow: auto;
+}
+
+.librarianIndexBox table
+{
+  text-align: center;
+  width: 100%;
+}
+.librarianIndexBox th, td
+{
+  padding: 10px 0px;
+}
+
+.librarianIndexBox th 
+{
+  color: #000;
+  background-color: rgba(0, 128, 0, 0.8);
+}
+
+.librarianIndexBox td a
+{
+  text-decoration: none;
+  color: white;
+  font-size: 25px;
+}
+.librarianIndexBox td a:visited
+{
+  text-decoration: none;
+  color: white;
+}
+.librarianIndexBOx td a:link
+{
+	text-decoration: none;
+  	color: white;
+}
+.librarianIndexBox td a:hover
+{
+  color: black;
+  font-size: 27px;
+}
+
+/* Librarian Book Edit Page */
+.librarianBookEditBox
+{
+  background: rgba(76, 175, 80, 0.3);
+  border: 3px solid green; 
+  width: 50%;
+  height: auto;
+  margin-top:20%;
+  color: white;
+  padding: 60px;
+}
+.librarianBookEditTable td
+{
+  font-size: 30px;
+  padding: 10px 30px;
+  height: 50px;
+}
+.librarianBookEditButton {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  height: 20%;
+  line-height: 20px;
+  padding: 15px 32px;
+  text-decoration: none;
+  font-size: 16px;
 }

@@ -20,28 +20,33 @@
 	</div>
 
 	<div class="librarianContainer" >
+
+		<a href="<%= librarian_requests_path %>" >
+			<div class="librarianThumbnail" style="background: url('/assets/Requests.jpg'); background-repeat: no-repeat; background-position: center; background-size: auto;">
+				<p>Requests</p>
+			</div>
+		</a>
+
 		<div class="librarianThumbnail" style="background: url('/assets/AddBook.jpg'); background-repeat: no-repeat; background-position: center; background-size: auto;" >
 			<p>Add Book</p>
 		</div>
 
-		<a href=librarian_books_path >
+		<a href="<%= librarian_books_path %>" >
 			<div class="librarianThumbnail" style="background: url('/assets/SeeBooks.jpg'); background-repeat: no-repeat; background-position: center; background-size: auto;">
 				<p>See Books</p>
 			</div>
 		</a>
 
-
-		<div class="librarianThumbnail" style="background: url('/assets/Users.jpg'); background-repeat: no-repeat; background-position: center; background-size: auto;">
-			<p>See All users</p>
-		</div>
+		<a href="<%= all_users_path %>">
+			<div class="librarianThumbnail" style="background: url('/assets/Users.jpg'); background-repeat: no-repeat; background-position: center; background-size: auto;">
+				<p>See All users</p>
+			</div>
+		</a>
 
 		
-
-
-
 	</div>
 
-	<div class="footer">
-		Visit Soon
-	</div>
+
+	<br><br><br><br><br><br><br><br><br>
+
 </div>
