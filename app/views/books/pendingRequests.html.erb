@@ -28,36 +28,25 @@
 
 	</div>
 
+
 	<div class="container" >
 		<center>
-			<div class= "lendedBookBox">
-				<% if @lendedBooks.empty? %>
-					<h1 style="color: black;"> No Books are lended </h1>
-				<% else %>
-					<table>
-						<tr >
-							<th id="t1">S.No.</th>
-							<th id="t2">Title</th>
-							<th id="t3">Date Of Lending</th>
-							<th id="t4">Return</th>
-						</tr>
-						<% i=1 %>
-						<% @lendedBooks.each do |lendedBook| %>
-							<tr>
-								<td> <%= i %><% i=i+1 %> </td>
-								<td> <%= lendedBook.name %> </td>
-								<td> <%= lendedBook.date_of_lend %> </td>
-								<td> <%= link_to  "Return", returnBook_path(lendedBook.id) %>
-								</td>
-							</tr>
-						<% end %>
-					</table>
-				<% end %>
-			</div>
+			<div class="requestsTabs">
+				<a class= "requestsTabAnchor" href='<% pendingRequests_path %>' >
+					<div class="requestsTabActive">
+						Lend Requests
+					</div>
+				</a>
+				<a class= "requestsTabAnchor" href='<% pendingRequests_path %>' >
+					<div class="requestsTab">
+						Return Requests
+					</div>
+				</a>
 
 		</center>
-
 	</div>
+
+
 
 	<br><br><br><br><br><br><br><br><br>
 

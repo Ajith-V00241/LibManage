@@ -10,6 +10,8 @@
 			<div class="contents">
 				Welcome, <%= current_user.name %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
+				<%= link_to 'Requests', pendingRequests_path %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
 				<%= link_to 'Lended Books', lendedBooks_path %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
@@ -59,17 +61,24 @@
 						<td> : </td>
 						<td> <%= @book.description %> </td>
 					</tr>
-
+					<tr>
+						<td class="TableTag">Available Quantity</td>
+						<td> : </td>
+						<td> <%= @book.availableBooks %> </td>
+					</tr>
 				</table>
 
 			</div>
-
-			<%= link_to "Lend Book", lend_path(@book), class: 'button' %>
+			<% if @book.availableBooks > 0 %>
+				<%= link_to "Lend Book", lend_path(@book), class: 'button' %>
+			<% else %>
+				<h2>No Books Available Right Now</h2>
+			<% end %>
 		</center>
 	</div>
 
 
-
+	<br><br><br><br><br><br><br><br><br>
 
 	<div class="footer">
 		Visit Soon

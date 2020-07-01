@@ -10,6 +10,8 @@
 			<div class="contents">
 				Welcome, <%= current_user.name %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
+				<%= link_to 'Requests', pendingRequests_path %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
 				<%= link_to 'Lended Books', lendedBooks_path %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
@@ -28,13 +30,20 @@
 
 	<div class="container" >
 		<center>
-			<p class="thank"> Thank You!. Your lending has been registered </p>
+			<p class="thank"> 
+				Thank You!.
+				<br>
+				Your lending has been requested. Check " Requests " to see status
+			</p>
 			<p class="goToHome" ><%= link_to "Click here", books_path, class: 'button' %> to go home page</p>
 		</center>
 
 	</div>
 
 
+	<br><br><br><br><br><br><br><br><br>
+
+	
 	<div class="footer">
 		Visit Soon
 	</div>
