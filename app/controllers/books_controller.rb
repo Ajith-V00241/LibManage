@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-
+	before_action :authenticate_user!
 	def index
 		@books = Book.all
 	end
@@ -16,24 +16,34 @@ class BooksController < ApplicationController
 
 	end
 
-	def pendingRequests
-
-	end
-
 	def lendedBooks
-	    @lendedBooks=LendedBook.where(username: current_user.name)
+	    @lendedBooks=LendedBook.where(user_id: current_user.id)
 	end
 
 	def lend
 		@book = Book.find_by(id: params[:id])
 		@lendRequest = LendRequest.create(status: "Pending", user_id: current_user.id, book_id: params[:id])
-		#@lendedBook = LendedBook.create(name: @book.title, username: current_user.name, date_of_lend: Date.today.to_s, user_id: current_user.id)
 		redirect_to '/books/thank'
 	end
 
 	def returnBook
-		LendedBook.find(params[:id]).destroy
-		redirect_to '/lendedBooks', notice: "Book is returned Back"
+		@lendedBook = LendedBook.find_by(id: params[:id])
+		@lendedBook.update(status: "Returning")
+		@returnRequest = ReturnRequest.create(status: "Pending", user_id: current_user.id, book_id: @lendedBook.book_id, lended_book_id: params[:id])
+		
+		redirect_to '/books/thank'
+	end
+
+	def lendRequests
+		@lendRequests = LendRequest.where(user_id: current_user.id).order(:status)
+		@books = Book.all
+
+	end
+
+	def returnRequests
+		@returnRequests = ReturnRequest.where(user_id: current_user.id)
+		@books = Book.all
+
 	end
 
 

@@ -10,7 +10,7 @@
 			<div class="contents">
 				Welcome, <%= current_user.name %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-				<%= link_to 'Requests', pendingRequests_path %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<%= link_to 'Requests', lendRequests_path %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 				<%= link_to 'Lended Books', lendedBooks_path %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -32,17 +32,45 @@
 	<div class="container" >
 		<center>
 			<div class="requestsTabs">
-				<a class= "requestsTabAnchor" href='<% pendingRequests_path %>' >
+				<a class= "requestsTabAnchor" href='/lendRequests' >
 					<div class="requestsTabActive">
 						Lend Requests
 					</div>
 				</a>
-				<a class= "requestsTabAnchor" href='<% pendingRequests_path %>' >
+				<a class= "requestsTabAnchor" href='/returnRequests' >
 					<div class="requestsTab">
 						Return Requests
 					</div>
 				</a>
+			</div>
 
+			<br><br>
+
+			<div class= "requestsBox"> 
+				<% if @lendRequests.empty? %>
+					<br><br><br>
+					<h1> No Requests for lending Books </h1>
+				<% else %>
+					<table>
+							<tr>
+								<th id="t1"> S.No. </th>
+								<th id="t2"> Book </th>
+								<th id="t3"> Available <br> Books </th>
+								<th id="t4"> Status </th>
+							</tr>
+						<% i=1 %>
+						<% @lendRequests.each do |request| %>
+							<% book = @books.find(request.book_id) %>
+							<tr>
+								<td> <%= i %> <% i+=1 %> </td>
+								<td> <%= book.title %> </td>
+								<td> <%= book.availableBooks %>/<%= book.totalBooks %> </td>
+								<td> <%= request.status %> </td>
+							</tr>
+						<% end %>
+					</table>
+				<% end %>
+			</div>
 		</center>
 	</div>
 

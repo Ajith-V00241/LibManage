@@ -8,7 +8,7 @@
 		</center>
 		<div class="tab">
 			<div class="contents">
-				Welcome, <%= current_user.name %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				Welcome, <%= current_admin.name %> <font color="black">(<%= current_admin.role.upcase %>)</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
 				<%= link_to 'LogOut', destroy_user_session_path, method: :delete %>
@@ -21,15 +21,20 @@
 
 	<div class="librarianContainer" >
 
-		<a href="<%= librarian_requests_path %>" >
-			<div class="librarianThumbnail" style="background: url('/assets/Requests.jpg'); background-repeat: no-repeat; background-position: center; background-size: auto;">
-				<p>Requests</p>
-			</div>
-		</a>
-
-		<div class="librarianThumbnail" style="background: url('/assets/AddBook.jpg'); background-repeat: no-repeat; background-position: center; background-size: auto;" >
-			<p>Add Book</p>
-		</div>
+		<% if current_admin.role=="RequestAdmin" %>
+			<a href="<%= librarian_requests_path %>" >
+				<div class="librarianThumbnail" style="background: url('/assets/Requests.jpg'); background-repeat: no-repeat; background-position: center; background-size: auto;">
+					<p>Requests</p>
+				</div>
+			</a>
+		<% end %>
+			<% if current_admin.role=="BookManager" %>
+			<a href="/librarians/addBook">
+				<div class="librarianThumbnail" style="background: url('/assets/AddBook.jpg'); background-repeat: no-repeat; background-position: center; background-size: auto;" >
+					<p>Add Book</p>
+				</div>
+			</a>
+		<% end %>
 
 		<a href="<%= librarian_books_path %>" >
 			<div class="librarianThumbnail" style="background: url('/assets/SeeBooks.jpg'); background-repeat: no-repeat; background-position: center; background-size: auto;">

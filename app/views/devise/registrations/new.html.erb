@@ -45,12 +45,12 @@
           
           <tr>
             <td> <%= f.label :date_of_membership %> </td>
-            <td> <%= f.text_field :date_of_membership %> </td>
+            <td> <%= f.text_field :date_of_membershipv, value:Time.now.strftime("%Y-%m-%d"), disabled: true%> </td>
           </tr>
           
           <tr>
-            <td> <%= f.label :totalcheckout %> </td>
-            <td> <%= f.text_field :totalcheckout %> </td>
+            <td> <% f.label :totalcheckout %> </td>
+            <td> <%f.text_field :totalcheckout , disabled: true, value: 0%> </td>
           </tr>
         </table>
         <br>

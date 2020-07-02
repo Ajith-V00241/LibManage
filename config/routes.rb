@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :admins, path: 'admins', controllers: {sessions: "admins/sessions", passwords: "admins/passwords", registrations: "admins/registrations" }
   root to: 'pages#home'
   devise_for :users 
+
   get 'books'=>'books#index', as: :books
   get '/books/thank', to: 'books#thank'
   get '/books/lend/:id' => 'books#lend', as: :lend
@@ -8,8 +10,11 @@ Rails.application.routes.draw do
   get 'searched_books', to: 'books#searchedIndex', as: :searched
   get '/books/returnBook/:id' => 'books#returnBook', as: :returnBook
   get 'lendedBooks' => 'books#lendedBooks', as: :lendedBooks
-  get 'pendingRequests' => 'books#pendingRequests', as: :pendingRequests
+  get 'lendRequests' => 'books#lendRequests', as: :lendRequests
+  get 'returnRequests' => 'books#returnRequests', as: :returnRequests
 
+  get 'librarians/addBook' => 'librarians#addBook', as: :librarian_add_book
+  post 'books' => 'librarians#new'
   get '/librarians/index'=>'librarians#index', as: :librarian
   get '/librarians/booksIndex'=>'librarians#booksIndex', as: :librarian_books
   get 'librarians/books/show/:id'=> 'librarians#show', as: :librarian_book
@@ -35,6 +40,7 @@ Rails.application.routes.draw do
 
   get 'librarians/user_admins/all_users'=> 'user_admins#allUsers', as: :all_users
   get 'librarians/user_admins/user/:id' => 'user_admins#showUser', as: :show_user
+  delete 'users/:id' => 'user_admins#removeUser', as: :remove_user
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

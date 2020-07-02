@@ -16,3 +16,10 @@ b7 = Book.create(title: "The Power of Habit", author: "Charles Duhigg", descript
 b8 = Book.create(title: "A Brief History of Time", author: "Stephen W. Hawking", description: "The British cosmologist reviews efforts to create a unified theory of the universe.", publisher: "Bantam", language: "English", image:"/assets/ABriefHistoryofTime.jpg", totalBooks: 10, availableBooks: 10)
 b9 = Book.create(title: "10% Happier", author: "Dan Harris", description: "A co-anchor of \"Nightline\" reports on the science and spiritual basis of meditation and how it has improved his life.", publisher: "Dey St.", language: "English", image:"/assets/10percentHappier.jpg", totalBooks: 10, availableBooks: 10)
 b10 = Book.create(title: "The New Jim Crow", author: "Michelle Alexander", description: "A law professor takes aim at the â€œwar on drugsâ€ and its impact on black men.", publisher: "New Press", language: "English", image:"/assets/TheNewJimCrow.jpg", totalBooks: 10, availableBooks: 10)
+
+a1 = Admin.create(email:"bookmanager@libmanage.com", password: "libmanage", name:"Karthikeyan", role:"BookManager", phone:"9876555522",address:"121/B, ABC Flats, Madurai")
+a2 = Admin.create(email:"requestadmin@libmanage.com", password: "libmanage", name:"Madhavi", role:"RequestAdmin", phone:"9824943410",address:"120/C, FILA Flats, Ooty")
+
+u1 = User.create(email: "arun@example.com", password: "ArunMani", password_confirmation: "ArunMani", name: "Arun Mani", date_of_membership: "2020-06-26 13:38:09", totalcheckout: 0, phone: "9894976149", address: "10, T-Nagar, Chennai")
+u2 = User.create(email: "gavin@example.com", password: "goutham", password_confirmation: "goutham", name: "Gavin Goutham", date_of_membership: "2020-08-26 13:38:09", totalcheckout: 0, phone: "9892354349", address: "10, Usman road, Coimbatore")
+u3 = User.create(email: "ajith@example.com", password: "123456", password_confirmation: "123456" , name: "Ajith Mani.V", date_of_membership: "2020-01-01 13:38:09", totalcheckout: 0, phone: "9566371149", address: "319, Madhakottai Road, Thanjavur")

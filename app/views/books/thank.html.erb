@@ -10,7 +10,7 @@
 			<div class="contents">
 				Welcome, <%= current_user.name %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-				<%= link_to 'Requests', pendingRequests_path %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<%= link_to 'Requests', lendRequests_path %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 				<%= link_to 'Lended Books', lendedBooks_path %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -33,7 +33,7 @@
 			<p class="thank"> 
 				Thank You!.
 				<br>
-				Your lending has been requested. Check " Requests " to see status
+				Your Request has been posted to LIBRARIAN. Check " Requests " to see status
 			</p>
 			<p class="goToHome" ><%= link_to "Click here", books_path, class: 'button' %> to go home page</p>
 		</center>

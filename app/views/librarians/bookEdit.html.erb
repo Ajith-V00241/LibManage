@@ -8,7 +8,7 @@
 		</center>
 		<div class="tab">
 			<div class="contents">
-				Welcome, <%= current_user.name %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				Welcome, <%= current_admin.name %> <font color="black">(<%= current_admin.role.upcase %>)</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
 				<%= link_to 'LogOut', destroy_user_session_path, method: :delete %>
@@ -43,6 +43,10 @@
 						<tr>
 							<td> <%= f.label :description %> </td>
 							<td> <%= f.text_area :description %> </td>
+						</tr>
+						<tr>
+							<td> <%= f.label :image_path %> </td>
+							<td> <%= f.text_field :image %> </td>
 						</tr>
 					</table>
 

@@ -8,7 +8,7 @@
 		</center>
 		<div class="tab">
 			<div class="contents">
-				Welcome, <%= current_user.name %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				Welcome, <%= current_admin.name %> <font color="black">(<%= current_admin.role.upcase %>)</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
 				<%= link_to 'LogOut', destroy_user_session_path, method: :delete %>
@@ -27,6 +27,10 @@
 				<br><br>
 				<h1> USER DETAILS </h1>
 				<table class="bookDetails">
+					<tr>
+						<td class="TableTag"> <b> User Id </b></td>
+						<td> : &nbsp;&nbsp;&nbsp;</td>
+						<td> <%= @user.id %> </td>
 					<tr>
 						<td class="TableTag"> <b> Name </b></td>
 						<td> : &nbsp;&nbsp;&nbsp;</td>
@@ -50,7 +54,7 @@
 					<tr>
 						<td class="TableTag"> <b>Date Of Membership </b></td>
 						<td> : &nbsp;&nbsp;&nbsp;</td>
-						<td> <%= @user.date_of_membership %> </td>
+						<td> <%= @user.date_of_membership.strftime("%Y-%m-%d") %> </td>
 					</tr>
 					<tr>
 						<td class="TableTag"> <b>Total Checkouts</b> </td>
@@ -58,9 +62,7 @@
 						<td> <%= @user.totalcheckout %> </td>
 					</tr>
 				</table>
-				<a class="button">Edit</a> 
-				 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<a class="button">Delete</a>
+				<%= link_to "Remove User", remove_user_path(@user), method: :delete, class: "button", data: {confirm: "SURE?" } %>
 				<br><br>
 			</div>
 
@@ -73,13 +75,15 @@
 							<th id="t1">S.No.</th>
 							<th id="t2">Title</th>
 							<th id="t3">Date Of Lending</th>
+							<th id="t4">Status</th>
 						</tr>
 						<% i=1 %>
 						<% @lendedBooks.each do |lendedBook| %>
 							<tr>
 								<td> <%= i %><% i=i+1 %> </td>
 								<td> <%= lendedBook.name %> </td>
-								<td> <%= lendedBook.date_of_lend %> </td>
+								<td> <%= lendedBook.date_of_lend.strftime("%Y-%m-%d") %> </td>
+								<td> <%= lendedBook.status %> </td>
 							</tr>
 						<% end %>
 					</table>

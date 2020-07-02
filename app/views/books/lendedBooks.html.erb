@@ -10,7 +10,7 @@
 			<div class="contents">
 				Welcome, <%= current_user.name %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-				<%= link_to 'Requests', pendingRequests_path %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<%= link_to 'Requests', lendRequests_path %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 				<%= link_to 'Lended Books', lendedBooks_path %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -46,8 +46,13 @@
 							<tr>
 								<td> <%= i %><% i=i+1 %> </td>
 								<td> <%= lendedBook.name %> </td>
-								<td> <%= lendedBook.date_of_lend %> </td>
-								<td> <%= link_to  "Return", returnBook_path(lendedBook.id) %>
+								<td> <%= lendedBook.date_of_lend.strftime("%Y-%m-%d") %> </td>
+								<td> 
+									<% if lendedBook.status == "Holding" %>
+										<%= link_to  "Return", returnBook_path(lendedBook) %>
+									<% else %>
+										<%= lendedBook.status %>
+									<% end %>
 								</td>
 							</tr>
 						<% end %>
