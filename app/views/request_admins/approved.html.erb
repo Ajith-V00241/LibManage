@@ -1,0 +1,90 @@
+<div class="fullPage" >
+	<div class="header" >
+		<%= link_to image_tag('/assets/bookLogo.jpg'), librarians_path , :class=>'logo' %>
+
+		<center>
+			<h1 > LIBRARY MANAGEMENT SYSTEM</h1>
+			<p> A platform to search your favorite book </p>
+		</center>
+		<div class="tab">
+			<div class="contents">
+				Welcome, <%= current_user.name %> <font color="black">(<%= current_user.role.upcase %>)</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+				<%= link_to 'LogOut', destroy_user_session_path, method: :delete %>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+			</div>
+
+		</div>
+
+	</div>
+
+
+	<div class="librarianContainer" >
+		<center>
+			<h1 style="color: #000; background-color: rgba(230, 0, 0,0.5); height: 40px;"> <%= @type.capitalize %> Book Requests </h1>
+			<div class="lendBookTabs">
+				<%= link_to request_admin_path(@type), class: "lendBookTabAnchor" do %>
+					<div class="lendBookTab">
+						All Requests
+					</div>
+				<% end %>
+				<%= link_to pending_request_admin_path(@type), class: "lendBookTabAnchor" do %>
+					<div class="lendBookTab">
+						Pending Requests
+					</div>
+				<% end %>
+				<%= link_to approved_request_admin_path(@type), class: "lendBookTabAnchor" do %>
+					<div class="lendBookTabActive">
+						Approved Requests
+					</div>
+				<% end %>
+				<%= link_to rejected_request_admin_path(@type), class: "lendBookTabAnchor" do %>
+					<div class="lendBookTab">
+						Rejected Requests
+					</div>
+				<% end %>
+			</div>
+
+			<br><br>
+
+			<div class= "lendBookBox"> 
+				<% if @requests.empty? %>
+				<br><br><br>
+					<h1> No Requests for <%= @type %>ing Books </h1>
+				<% else %>
+				<table>
+						<tr>
+							<th id="t1"> S.No. </th>
+							<th id="t2"> Book </th>
+							<th id="t3"> User </th>
+							<th id="t4"> Available <br> Books </th>
+							<th id="t5"> Status </th>
+						</tr>
+					<% count = ((params[:page] || 1).to_i - 1) * 5%>
+					<% @requests.each_with_index do |request, index| %>
+						<% book = @books.find(request.book_id) %>
+						<tr>
+							<td> <%= count + index + 1%> </td>
+							<td> <%= book.title %> </td>
+							<td> <%= @users.find(request.user_id).email %> </td>
+							<td> <%= book.availableBooks %>/<%= book.totalBooks %> </td>
+							<td> <%= request.status %> </td>
+						</tr>
+					<% end %>
+				</table>
+				<% end %>
+				
+			</div>
+			<br>
+			<%= will_paginate @requests, class: "digg_pagination" %>
+
+		</center>
+
+
+	</div>
+
+
+	<br><br><br><br><br><br><br><br><br>
+
+</div>

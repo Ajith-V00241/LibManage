@@ -1,6 +1,6 @@
 <div class="fullPage" >
 	<div class="header" >
-		<%= link_to image_tag('/assets/bookLogo.jpg'), '/librarians/index' , :class=>'logo' %>
+		<%= link_to image_tag('/assets/bookLogo.jpg'), librarians_path , :class=>'logo' %>
 
 		<center>
 			<h1 > LIBRARY MANAGEMENT SYSTEM</h1>
@@ -8,7 +8,7 @@
 		</center>
 		<div class="tab">
 			<div class="contents">
-				Welcome, <%= current_admin.name %> <font color="black">(<%= current_admin.role.upcase %>)</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				Welcome, <%= current_user.name %> <font color="black">(<%= current_user.role.upcase %>)</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
 				<%= link_to 'LogOut', destroy_user_session_path, method: :delete %>
@@ -21,28 +21,28 @@
 
 	<div class="librarianContainer" >
 
-		<% if current_admin.role=="RequestAdmin" %>
-			<a href="<%= librarian_requests_path %>" >
+		<% if current_user.role=="request_manager" %>
+			<a href="<%= request_admins_path %>" >
 				<div class="librarianThumbnail" style="background: url('/assets/Requests.jpg'); background-repeat: no-repeat; background-position: center; background-size: auto;">
 					<p>Requests</p>
 				</div>
 			</a>
 		<% end %>
-			<% if current_admin.role=="BookManager" %>
-			<a href="/librarians/addBook">
+		<% if current_user.role=="book_manager" %>
+			<a href="<%= new_book_path %>">
 				<div class="librarianThumbnail" style="background: url('/assets/AddBook.jpg'); background-repeat: no-repeat; background-position: center; background-size: auto;" >
 					<p>Add Book</p>
 				</div>
 			</a>
+
+			<a href="<%= books_librarians_path %>" >
+				<div class="librarianThumbnail" style="background: url('/assets/SeeBooks.jpg'); background-repeat: no-repeat; background-position: center; background-size: auto;">
+					<p>See Books</p>
+				</div>
+			</a>
 		<% end %>
 
-		<a href="<%= librarian_books_path %>" >
-			<div class="librarianThumbnail" style="background: url('/assets/SeeBooks.jpg'); background-repeat: no-repeat; background-position: center; background-size: auto;">
-				<p>See Books</p>
-			</div>
-		</a>
-
-		<a href="<%= all_users_path %>">
+		<a href="<%= user_admins_path %>">
 			<div class="librarianThumbnail" style="background: url('/assets/Users.jpg'); background-repeat: no-repeat; background-position: center; background-size: auto;">
 				<p>See All users</p>
 			</div>

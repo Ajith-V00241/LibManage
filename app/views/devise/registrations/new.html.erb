@@ -11,12 +11,12 @@
         <table class="signUpTable">
           <tr>
             <td> <%= f.label :name %> </td>
-            <td> <%= f.text_field :name, auttofocus: true %> </td>
+            <td> <%= f.text_field :name, auttofocus: true , required: true %> </td>
           </tr>
 
           <tr>
             <td> <%= f.label :email %> </td>
-            <td> <%= f.email_field :email, autocomplete: "email" %></td>
+            <td> <%= f.email_field :email, autocomplete: "email", required: true %></td>
           </tr>
 
           <tr>
@@ -25,27 +25,27 @@
               <% if @minimum_password_length %>
               <em>(<%= @minimum_password_length %> characters minimum)</em>
               <% end %><br />
-              <%= f.password_field :password, autocomplete: "new-password" %>
+              <%= f.password_field :password, autocomplete: "new-password", required: true  %>
             </td>
           </tr>
 
           <tr>
             <td> <%= f.label :password_confirmation %> </td>
-            <td> <%= f.password_field :password_confirmation, autocomplete: "new-password" %> </td>
+            <td> <%= f.password_field :password_confirmation, autocomplete: "new-password", required: true  %> </td>
 
           <tr>
             <td> <%= f.label :phone %> </td>
-            <td> <%= f.text_field :phone %> </td>
+            <td> <%= f.text_field :phone, required: true  %> </td>
           </tr>
           
           <tr>
             <td> <%= f.label :address %> </td>
-            <td> <%= f.text_area :address %> </td>
+            <td> <%= f.text_area :address, required: true  %> </td>
           </tr>
           
           <tr>
             <td> <%= f.label :date_of_membership %> </td>
-            <td> <%= f.text_field :date_of_membershipv, value:Time.now.strftime("%Y-%m-%d"), disabled: true%> </td>
+            <td> <%= f.text_field :date_of_membership, value:Time.now.strftime("%Y-%m-%d"), disabled: true%> </td>
           </tr>
           
           <tr>
@@ -61,7 +61,7 @@
       </div>
   </center>
 
-
+  <br><br><br><br><br><br><br><br><br><br>
 
   <div class="footer">
     Visit Soon

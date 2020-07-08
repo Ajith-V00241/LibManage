@@ -10,16 +10,15 @@
 			<div class="contents">
 				Welcome, <%= current_user.name %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-				<%= link_to 'Requests', lendRequests_path %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<%= link_to 'Requests', lend_requests_books_path %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-				<%= link_to 'Lended Books', lendedBooks_path %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
+				<%= link_to 'Lended Books', lended_list_books_path %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 				<%= link_to 'LogOut', destroy_user_session_path, method: :delete %>
 				&nbsp;&nbsp;&nbsp;&nbsp;
 			</div>
 
-			<%= form_tag(searched_path, method: :get) do %>
+			<%= form_tag(searched_index_books_path, method: :get) do %>
 				<%= text_field_tag(:search, params[:search] ,:placeholder=>"Search By Name") %>
 				<%= submit_tag ("Search") %>
 			<% end %>

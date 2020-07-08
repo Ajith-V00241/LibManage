@@ -1,0 +1,54 @@
+<div class="fullPage" >
+	<div class="header" >
+		<%= link_to image_tag('/assets/bookLogo.jpg'), librarians_path , :class=>'logo' %>
+
+		<center>
+			<h1 > LIBRARY MANAGEMENT SYSTEM</h1>
+			<p> A platform to search your favorite book </p>
+		</center>
+		<div class="tab">
+			<div class="contents">
+				Welcome, <%= current_user.name %> <font color="black">(<%= current_user.role.upcase %>)</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+				<%= link_to 'LogOut', destroy_user_session_path, method: :delete %>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+			</div>
+
+		</div>
+
+	</div>
+
+
+	<div class="librarianContainer" >
+		<center>
+			<div class="librarianIndexBox">
+				<table >
+					<tr>
+						<th>S.No.</th>
+						<th>Name</th>
+					</tr>
+					<% count = ((params[:page]||1).to_i - 1) * 10 %>
+					<% @books.each_with_index do |book, index| %>
+						<tr>
+							<td> <%= count + index + 1 %></td>
+							<td> <%= link_to book.title, librarian_path(book) %> </td>
+						</tr>
+					<% end %>
+
+				</table>
+			</div>
+			<br><br>
+			<%= will_paginate @books, class: "digg_pagination" %>
+		</center>
+	</div>
+
+
+
+	<br><br><br><br><br><br><br><br><br>
+
+	
+	<div class="footer">
+		Visit Soon
+	</div>
+</div>

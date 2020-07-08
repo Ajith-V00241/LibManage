@@ -1,4 +1,5 @@
 class LendedBook < ApplicationRecord
 	belongs_to :user
-	has_one :return_request, dependent: :destroy
+	belongs_to :book
+	has_one :request, dependent: :destroy
 end

@@ -1,6 +1,6 @@
-, data: {confirm: "SURE?" } <div class="fullPage" >
+<div class="fullPage" >
 	<div class="header" >
-		<%= link_to image_tag('/assets/bookLogo.jpg'), '/librarians/index' , :class=>'logo' %>
+		<%= link_to image_tag('/assets/bookLogo.jpg'), librarians_path , :class=>'logo' %>
 
 		<center>
 			<h1 > LIBRARY MANAGEMENT SYSTEM</h1>
@@ -8,7 +8,7 @@
 		</center>
 		<div class="tab">
 			<div class="contents">
-				Welcome, <%= current_admin.name %> <font color="black">(<%= current_admin.role.upcase %>)</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				Welcome, <%= current_user.name %> <font color="black">(<%= current_user.role.upcase %>)</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
 				<%= link_to 'LogOut', destroy_user_session_path, method: :delete %>
@@ -52,13 +52,23 @@
 						<td> : </td>
 						<td> <%= @book.description %> </td>
 					</tr>
+					<tr>
+						<td class="TableTag">Available Books</td>
+						<td>:</td>
+						<td> <%= @book.availableBooks %></td>
+					</tr>
+					<tr>
+						<td class="TableTag">Total Books</td>
+						<td>:</td>
+						<td> <%= @book.totalBooks %></td>
+					</tr>
 
 				</table>
 
 			</div>
-			<%= link_to "Edit", librarian_book_edit_path(@book) , class: 'button' %>
+			<%= link_to "Edit", edit_book_path(@book) , class: 'button' %>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<%= link_to "Remove Book", librarian_book_remove_path(@book.id), method: :delete, class: 'button', data: {confirm: "SURE?" }  %>
+			<%= link_to "Remove Book", book_path(@book.id), method: :delete, class: 'button' %>
 		</center>
 	</div>
 

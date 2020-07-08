@@ -7,10 +7,12 @@ class ApplicationController < ActionController::Base
 	end
 
 	def after_sign_in_path_for(resource)
-		if current_admin
-			librarian_path
-		elsif current_user
+		if current_user.role == "member"
 			books_path
+		elsif current_user.role == "book_manager"
+			librarians_path
+		elsif current_user.role == "request_manager"
+			librarians_path
 		end
 	end
 

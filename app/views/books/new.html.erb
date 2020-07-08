@@ -1,0 +1,82 @@
+<div class="fullPage" >
+	<div class="header" >
+		<%= link_to image_tag('/assets/bookLogo.jpg'), librarians_path , :class=>'logo' %>
+
+		<center>
+			<h1 > LIBRARY MANAGEMENT SYSTEM</h1>
+			<p> A platform to search your favorite book </p>
+		</center>
+		<div class="tab">
+			<div class="contents">
+				Welcome, <%= current_user.name %> <font color="black">(<%= current_user.role.upcase %>)</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+				<%= link_to 'LogOut', destroy_user_session_path, method: :delete %>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="librarianContainer" >
+		<center>
+			<h1> Add New Book </h1>
+			<div class="librarianBookEditBox">
+				
+				<%= form_with model: @book do |f| %>
+				<% if !@book.errors.messages.empty? %>
+					<ul>
+						<% @book.errors.messages.each do |label, messages| %>
+							<% messages.each do |message| %>
+								<li> <%= label.to_s_capitalize + message %> </li>
+							<% end %>
+						<% end %>
+					</ul>
+				<% end %>
+					<table class="librarianBookEditTable">
+						<tr>
+							<td> <%= f.label :title %> </td>
+							<td> <%= f.text_field :title, required: true %>
+						</tr>
+						<tr>
+							<td> <%= f.label :author %> </td>
+							<td> <%= f.text_field :author, required: true %> </td>
+						</tr>
+						<tr>
+							<td> <%= f.label :publisher %> </td>
+							<td> <%= f.text_field :publisher, required: true %> </td>
+						</tr>
+						<tr>
+							<td> <%= f.label :language %> </td>
+							<td> <%= f.text_field :language, required: true %> </td>
+						</tr>
+						<tr>
+							<td> <%= f.label :description %> </td>
+							<td> <%= f.text_area :description, size: "18x4", required: true %> </td>
+						</tr>
+						<tr>
+							<td> <%= f.label :image_path %> </td>
+							<td> <%= f.text_field :image, value: "/assets/bookLogo.jpg", required: true%> </td>
+						</tr>
+						<tr>
+							<td> <%= f.label :total_books %> </td>
+							<td> <%= f.text_field :totalBooks, value: 0, required: true%> </td>
+						</tr>
+					</table>
+
+					<%= f.submit "Add Book"%>
+
+				<% end %>
+			</div>
+
+		</center>
+	</div>
+
+
+	<br><br><br><br><br><br><br><br><br>
+
+	<div class="footer">
+		Visit Soon
+	</div>
+</div>

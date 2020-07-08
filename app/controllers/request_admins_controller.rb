@@ -1,82 +1,86 @@
 class RequestAdminsController < ApplicationController
-	before_action :authenticate_admin!
-	def requestsIndex
+	before_action :authenticate_user!
+
+	def index
 
 	end
 
-	def lendRequestsAll
-		@lendRequests =  LendRequest.all
+	def show
+		#@books = Book.all
+		#@users = User.all
+		@type = params[:id]
+		@requests =  Request.where(request_type: params[:id]).order(:status).paginate(page: params[:page], per_page: 5)
+	end
+
+	def pending
 		@books = Book.all
 		@users = User.all
+		@type = params[:id]
+		@requests = Request.where(request_type: params[:id], status: 'Pending').paginate(page: params[:page], per_page: 5)
 	end
 
-	def lendRequestsPending
-		@lendRequests =  LendRequest.where(status: "Pending")
+	def approved
 		@books = Book.all
 		@users = User.all
+		@type = params[:id]
+		@requests = Request.where(request_type: params[:id], status: 'Approved').paginate(page: params[:page], per_page: 5)
 	end
 
-	def lendRequestsApproved
-		@lendRequests =  LendRequest.where(status: "Approved")
+	def rejected
 		@books = Book.all
 		@users = User.all
+		@type = params[:id]
+		@requests = Request.where(request_type: params[:id], status: 'Rejected').paginate(page: params[:page], per_page: 5)
 	end
 
-	def lendRequestsRejected
-		@lendRequests =  LendRequest.where(status: "Rejected")
-		@books = Book.all
-		@users = User.all
-	end
-
-	def approveLendRequest
-		lendRequest = LendRequest.find(params[:id])
-		user = User.find(lendRequest.user_id)
-		book = Book.find(lendRequest.book_id)
-		if book.availableBooks !=0
-			book.update(availableBooks: book.availableBooks-1)
+	def approve_lend
+		request = Request.find(params[:id])
+		book = Book.find(request.book_id)
+		user = User.find(request.user_id)
+		if book.availableBooks > 0
+			book.update(availableBooks: book.availableBooks - 1)
 			user.update(totalcheckout: user.totalcheckout+1)
-			@lendedBooks = LendedBook.create(name: book.title, username: user.name, date_of_lend: Date.today.to_s, user_id: user.id, book_id: book.id, status: "Holding")
+			lended_books = LendedBook.create(name: book.title, username: user.name, date_of_lend: Date.today.to_s, user_id: user.id, book_id: book.id, status: "Holding")
+			status = "Approved"
+			request.update(status: status)
+			redirect_to request_admin_path("lend"), notice: "Request Approved"
+		else
+			redirect_to request_admin_path("lend"), notice: "Book is not available right now"
+		end
+	end
+
+	def reject_lend
+		request = Request.find(params[:id])
+		request.update(status: "Rejected")
+		redirect_to request_admin_path("lend"), notice: "Request Rejected"
+	end
+
+	def approve_return
+		request = Request.find(params[:id])
+		book = Book.find(request.book_id)
+		if book.totalBooks != book.availableBooks
+			book.update(availableBooks: book.availableBooks+1)
+			lended_book = LendedBook.find(request.lended_book_id)
+			lended_book.update(status: "Returned")
 			status = "Approved"
 		else
 			status = "Pending"
 		end
-		lendRequest.update(status: status)
-		redirect_to lend_all_requests_path, notice: "Request Approved"
+		request.update(status: status)
+
+		redirect_to request_admin_path("return"), notice: "Request Approved"
 	end
 
-	def rejectLendRequest
-		lendRequest = LendRequest.find(params[:id])
-		lendRequest.update(status: "Rejected")
-		redirect_to lend_all_requests_path, notice: "Request Rejected"
+	def reject_return
+		request = Request.find(params[:id])
+		lended_book = LendedBook.find(request.lended_book_id)
+		lended_book.update(status: "Holding")
+		request.update(status: "Rejected")
+		redirect_to request_admin_path("return"), notice: "Request Rejected"
 	end
 
-
-
-
-	def returnRequestsAll
-		@returnRequests = ReturnRequest.all
-		@books = Book.all
-		@users = User.all
-	end
-
-	def returnRequestsPending
-		@returnRequests =  ReturnRequest.where(status: "Pending")
-		@books = Book.all
-		@users = User.all
-	end
-
-	def returnRequestsApproved
-		@returnRequests =  ReturnRequest.where(status: "Approved")
-		@books = Book.all
-		@users = User.all
-	end
-
-	def returnRequestsRejected
-		@returnRequests =  ReturnRequest.where(status: "Rejected")
-		@books = Book.all
-		@users = User.all
-	end
-
+#d-------------------------------
+	
 	def approveReturnRequest
 		returnRequest = ReturnRequest.find(params[:id])
 		book = Book.find(returnRequest.book_id)
