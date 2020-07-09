@@ -1,7 +1,7 @@
 class UserAdminsController < ApplicationController
 	before_action :authenticate_user!
 	def index
-		@users = User.all.paginate(page: params[:page], per_page: 10)
+		@users = User.where(role: "member").paginate(page: params[:page], per_page: 10)
 	end
 
 	def show #show Users

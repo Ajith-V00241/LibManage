@@ -8,7 +8,7 @@
 		</center>
 		<div class="tab">
 			<div class="contents">
-				Welcome, <%= current_user.name %> <font color="black">(<%= current_user.role.upcase %>)</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				Welcome, <%= current_user.name %> <font color="black">(<%= current_user.role.humanize %>)</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
 				<%= link_to 'LogOut', destroy_user_session_path, method: :delete %>
@@ -37,14 +37,12 @@
 						</tr> 
 					<% count = ((params[:page] || 1).to_i - 1 ) * 10 %>
 					<% @users.each_with_index do |user, index| %>
-						<% if user.role=="member" %>
 							<tr class="allUsersTableRow">
 								<td> <%= count + index + 1%> </td>
 								<td> <%= user.id %> </td>
 								<td> <%= link_to user.name, user_admin_path(user) %> </td>
 							
 							</tr>
-						<% end %>
 					<% end %>
 				</table>
 				<% end %>

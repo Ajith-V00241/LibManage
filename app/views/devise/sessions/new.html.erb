@@ -1,7 +1,7 @@
 <div class="fullPage">
   <center>
     <div class="loginOptionBox">
-      <h2>Member Log in</h2>
+      <h2>Log in</h2>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
         <table>
@@ -17,11 +17,11 @@
           </tr> 
 
         </table>
-
+        <br>
         <% if devise_mapping.rememberable? %>
           <div class="field">
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me %>
+            <% f.check_box :remember_me %>
+            <% f.label :remember_me %>
           </div>
         <% end %>
 

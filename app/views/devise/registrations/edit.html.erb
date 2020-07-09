@@ -1,43 +1,72 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="fullPage">
+  <div class="header" >
+    <%= link_to image_tag('/assets/bookLogo.jpg'), '/books' , :class=>'logo' %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+    <center>
+      <h1 > LIBRARY MANAGEMENT SYSTEM</h1>
+      <p> A platform to search your favorite book </p>
+    </center>
+    <div class="tab">
+      <div class="contents">
+        Welcome,<%= link_to current_user.name, show_user_path(current_user) %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <%= link_to 'Requests', lend_requests_books_path %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        <%= link_to 'Lended Books', lended_list_books_path %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        <%= link_to 'LogOut', destroy_user_session_path, method: :delete %>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+      </div>
+    </div>
   </div>
+  <center>
+    <div class ="signUpBox" >
+      <br><br>
+      <h1 style="color: #000;"> Edit <%= resource_name.to_s.humanize %> </h1>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
+        <div class="field", style="font-size: 20px;">
+          <%= f.label :email %> &nbsp;&nbsp;&nbsp;
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
+        <br>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
+        <table class="signUpTable">
+          <tr>
+            <td> <%= f.label :name %> </td>
+            <td> <%= f.text_field :name, auttofocus: true , required: true %> </td>
+          </tr>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
+          <tr>
+            <td> <%= f.label :phone %> </td>
+            <td> <%= f.text_field :phone, required: true  %> </td>
+          </tr>
+          
+          <tr>
+            <td> <%= f.label :address %> </td>
+            <td> <%= f.text_area :address, required: true  %> </td>
+          </tr>
+          
+        </table>
+        <br>
+        <div class="field">
+          <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+          <%= f.password_field :current_password, autocomplete: "current-password" %>
+        </div>
 
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+        <br>
+        <br>
+        <%= f.submit "Save Changes", class: 'signUpButton' %>
+      <% end %>
+    </div>
+    <br>
+    <h2>Cancel my account</h2>
+    Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, class: "signUpButton", method: :delete %>
+  </center>
+</div>
