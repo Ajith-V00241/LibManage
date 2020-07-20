@@ -4,6 +4,7 @@ class BooksController < ApplicationController
 	before_action -> { check_repeating_requests("return") }, only:[:return]
 	def index
 		@books = Book.paginate(page: params[:page], per_page: 5)
+		#render json:Book.all
 	end
 
 	def new
@@ -26,7 +27,6 @@ class BooksController < ApplicationController
 	end
 
 	def update
-		#raise params.inspect
 		@book = Book.find(params[:id])
 
 		if @book.update(title: params[:book][:title], author: params[:book][:author], publisher: params[:book][:publisher], language: params[:book][:language], description: params[:book][:description], totalBooks: params[:book][:totalBooks], availableBooks: params[:book][:availableBooks])
@@ -44,6 +44,8 @@ class BooksController < ApplicationController
 		Book.find(params[:id]).destroy
 		redirect_to books_librarians_path, notice: "Book deleted"
 	end
+
+	
 
 
 	def searched_index

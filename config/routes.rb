@@ -16,12 +16,12 @@ Rails.application.routes.draw do
     get 'return', on: :member
   end
 
-  resources :librarians do 
+  resources :librarians, only: [:index, :show] do 
     get 'books', on: :collection
   end
 
-  resources :user_admins
-  resources :request_admins do
+  resources :user_admins, only: [:index, :show, :destroy]
+  resources :request_admins, only: [:index, :show] do
     member do
       get 'pending'
       get 'approved'

@@ -6,8 +6,6 @@ class RequestAdminsController < ApplicationController
 	end
 
 	def show
-		#@books = Book.all
-		#@users = User.all
 		@type = params[:id]
 		@requests =  Request.where(request_type: params[:id]).order(:status).paginate(page: params[:page], per_page: 5)
 	end
