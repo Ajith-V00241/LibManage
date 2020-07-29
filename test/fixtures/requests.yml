@@ -4,8 +4,14 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+one:
+  status: "Pending"
+  request_type: "lend"
+  user_id: 980190962
+  book_id: 298486374
+two:
+  status: "Pending"
+  request_type: "return"
+  user_id: 980190962
+  book_id: 298486374
+  lended_book_id: 980190962

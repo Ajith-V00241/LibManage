@@ -6,6 +6,6 @@ class User < ApplicationRecord
 
   has_many :lended_book, dependent: :destroy
   has_many :requests, dependent: :destroy
-  validates_presence_of :phone, :address
+  validates_presence_of :name, :phone, :address
   validates_uniqueness_of :phone
 end

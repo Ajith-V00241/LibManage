@@ -1,15 +1,19 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  author: MyString
-  publisher: MyString
-  language: MyString
-  description: MyText
+  title: MyBook
+  author: MyAuthor
+  publisher: MyPublisher
+  language: MyLanguage
+  description: MyDescription
+  totalBooks: 12
+  availableBooks: 11
 
 two:
-  title: MyString
-  author: MyString
-  publisher: MyString
-  language: MyString
-  description: MyText
+  title: NewBook
+  author: NewAuthor
+  publisher: NewPublisher
+  language: NewLanguage
+  description: NewDescription
+  totalBooks: 12
+  availableBooks: 11

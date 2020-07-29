@@ -28,7 +28,8 @@ class BooksController < ApplicationController
 
 	def update
 		@book = Book.find(params[:id])
-
+		# puts "Available books(in book controller):#{@book.availableBooks}"
+		#puts @book.totalBooks
 		if @book.update(title: params[:book][:title], author: params[:book][:author], publisher: params[:book][:publisher], language: params[:book][:language], description: params[:book][:description], totalBooks: params[:book][:totalBooks], availableBooks: params[:book][:availableBooks])
 			redirect_to librarian_path(@book), notice: "Book Updated"
 		else

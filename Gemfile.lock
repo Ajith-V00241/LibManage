@@ -230,6 +230,7 @@ DEPENDENCIES
   devise
   jbuilder (~> 2.7)
   listen (~> 3.2)
+  minitest
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.2)
   react-rails

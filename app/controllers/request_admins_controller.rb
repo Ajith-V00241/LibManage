@@ -77,7 +77,7 @@ class RequestAdminsController < ApplicationController
 		redirect_to request_admin_path("return"), notice: "Request Rejected"
 	end
 
-#d-------------------------------
+#-------------------------------
 	
 	def approveReturnRequest
 		returnRequest = ReturnRequest.find(params[:id])

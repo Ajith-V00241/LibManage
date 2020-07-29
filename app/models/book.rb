@@ -5,11 +5,13 @@ class Book < ApplicationRecord
 	has_many :requests, dependent: :destroy
 	before_create :set_available_books
 	validate do 
-				if self.availableBooks > self.totalBooks
-					self.errors.add(:availableBooks, "Should not be greater than Total Books")
-				end
-			end
-	validates :totalBooks, presence: true
+		# puts "book id(in book model): #{self.id}"
+		# puts "Available books(in book model): #{self.availableBooks}"
+		# puts "Title(in book model): #{self.title}"
+		if (self.availableBooks>self.totalBooks)
+			self.errors.add(:availableBooks, "Should not be greater than Total Books")
+		end
+	end
 	validates :title, presence: true
 	validates :author, presence: true
 	validates :publisher, presence: true

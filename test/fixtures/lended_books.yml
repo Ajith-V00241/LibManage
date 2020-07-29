@@ -2,10 +2,13 @@
 
 one:
   name: MyString
-  username: MyString
-  date_of_lend: 2020-06-25 14:31:11
+  username: name
+  date_of_lend: "2020-07-08 00:00:00"
+  status: "Holding"
+  user_id: 980190962
+  book_id: 298486374
 
-two:
-  name: MyString
-  username: MyString
-  date_of_lend: 2020-06-25 14:31:11
+# two:
+#   name: MyString
+#   username: MyString
+#   date_of_lend: 2020-06-25 14:31:11
